@@ -29,11 +29,14 @@ public class DataLoader implements CommandLineRunner {
                 new Producto(null, "Escritorio", "Muebles", 180.00, 12, true),
                 new Producto(null, "Webcam 1080p", "Electrónica", 60.00, 40, true),
                 new Producto(null, "Micrófono Condensador", "Electrónica", 90.00, 25, true),
-                new Producto(null, "Mochila para Laptop", "Accesorios", 35.00, 60, true)
+                new Producto(null, "Mochila para Laptop", "Accesorios", 35.00, 60, true),
+                new Producto(null, "Smartphone 5G", "Tecnología", 850.00, 25, true),
+                new Producto(null, "Tablet 10 pulgadas", "Tecnología", 350.00, 40, true),
+                new Producto(null, "Smartwatch Pro", "Tecnología", 250.00, 50, true)
         );
 
         productoRepository.saveAll(productos);
-        System.out.println("--- 10 productos han sido guardados en la base de datos ---");
+        System.out.println("--- 13 productos han sido guardados en la base de datos ---");
 
         System.out.println("\n--- INICIO TEST MANUAL INTERFACES FUNCIONALES ---");
         Producto pPrueba = productos.get(0); // Audifonos BT
