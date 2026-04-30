@@ -34,5 +34,30 @@ public class DataLoader implements CommandLineRunner {
 
         productoRepository.saveAll(productos);
         System.out.println("--- 10 productos han sido guardados en la base de datos ---");
+
+        System.out.println("\n--- INICIO TEST MANUAL INTERFACES FUNCIONALES ---");
+        Producto pPrueba = productos.get(0); // Audifonos BT
+
+        // 1. Validadores
+        boolean esPrecioPositivo = FuncionalUtils.ValidadorProducto.validarPrecioPositivo().validar(pPrueba);
+        boolean tieneStockMinimo = FuncionalUtils.ValidadorProducto.validarStockMinimo(10).validar(pPrueba);
+        boolean estaActivo = FuncionalUtils.ValidadorProducto.validarEsActivo().validar(pPrueba);
+        System.out.println("Validaciones para " + pPrueba.getNombre() + ":");
+        System.out.println("- Precio positivo: " + esPrecioPositivo);
+        System.out.println("- Stock >= 10: " + tieneStockMinimo);
+        System.out.println("- Está activo: " + estaActivo);
+
+        // 2. Transformadores
+        Producto pDescuento = FuncionalUtils.TransformadorProducto.aplicarDescuento(10.0).transformar(pPrueba);
+        System.out.println("Precio después de 10% descuento: $" + String.format("%.2f", pDescuento.getPrecio()));
+        Producto pDesactivado = FuncionalUtils.TransformadorProducto.desactivar().transformar(pPrueba);
+        System.out.println("Estado después de desactivar: " + (pDesactivado.getActivo() ? "Activo" : "Inactivo"));
+
+        // 3. Formateadores
+        String resumen = FuncionalUtils.FormateadorProducto.formatoResumen().formatear(pPrueba);
+        String etiqueta = FuncionalUtils.FormateadorProducto.formatoEtiqueta().formatear(pPrueba);
+        System.out.println("Formato Resumen: " + resumen);
+        System.out.println("Formato Etiqueta: " + etiqueta);
+        System.out.println("--- FIN TEST MANUAL ---\n");
     }
 }
