@@ -63,7 +63,7 @@ Usa el poder de `Collectors.groupingBy` y un formateador funcional para retornar
 
 ---
 
-## 🗄️ Base de Datos en Memoria (H2)
+## Base de Datos en Memoria (H2)
 
 Al iniciar la aplicación, la clase `DataLoader` inserta automáticamente 13 registros de prueba. Para inspeccionar la base de datos visualmente:
 
